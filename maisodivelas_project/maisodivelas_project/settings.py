@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,6 +36,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
+    'business',
+    'news',
+    'ads',
+    'crispy_forms',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -71,19 +78,22 @@ WSGI_APPLICATION = 'maisodivelas_project.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'xy4fcc41_maisodivelas',
-        'USER': 'xy4fcc41',
-        'PASSWORD': '8)4g!r#7&9of',
-        'HOST': '81.88.52.192',
-        'PORT': '3306'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'xy4fcc41_maisodivelas',
+#         'USER': 'xy4fcc41',
+#         'PASSWORD': '8)4g!r#7&9of',
+#         'HOST': '81.88.52.192',
+#         'PORT': '3306'
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -122,10 +132,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
